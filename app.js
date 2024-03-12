@@ -1,8 +1,7 @@
 import createError from 'http-errors'
 import express from 'express'
-import path from 'path'
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import path, {dirname} from 'path'
+import {fileURLToPath} from 'url';
 
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
@@ -25,7 +24,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
