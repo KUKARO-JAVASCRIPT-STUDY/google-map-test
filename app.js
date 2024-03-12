@@ -1,12 +1,18 @@
 import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import dotenv from 'dotenv'
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+import indexRouter from './routes/index.js'
+import usersRouter from './routes/users.js'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 dotenv.config({path: '.env.local'})
@@ -40,4 +46,4 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-module.exports = app;
+export default app;
