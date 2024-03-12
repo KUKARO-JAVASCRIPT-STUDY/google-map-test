@@ -19,7 +19,7 @@ async function initMap() {
     // Request needed libraries.
     //@ts-ignore
     const {Map} = await google.maps.importLibrary("maps");
-    console.log(google);
+
     // The map, centered at Uluru
     map = new Map(document.getElementById("map"), {
         zoom: 18,
