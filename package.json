@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon --watch '*.ts' --exec 'ts-node' bin/www.ts",
     "build": "tsc",
-    "dev": "nodemon --exec ./node_modules/ts-node/dist/index.js bin/www.ts",
+    "dev": "nodemon --watch '*.ts' --exec 'ts-node' bin/www.ts",
     "prod": "node build/index.js"
   },
   "dependencies": {
@@ -13,7 +13,7 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.4.5",
-    "ejs": "~2.6.1",
+    "ejs": "3.1.9",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1"
   },
