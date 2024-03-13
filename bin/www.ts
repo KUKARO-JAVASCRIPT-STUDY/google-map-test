@@ -4,9 +4,11 @@
  * Module dependencies.
  */
 
-import app from '../app.js'
+import app from '../app'
 import debugSetting from 'debug'
 import http from 'http'
+import {AddressInfo} from "node:net";
+
 const debug = debugSetting('init:server');
 
 /**
@@ -34,8 +36,8 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
-  var port = parseInt(val, 10);
+function normalizePort(val: any) {
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -54,12 +56,12 @@ function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+function onError(error: any) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
-  var bind = typeof port === 'string'
+  const bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
 
@@ -83,9 +85,7 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  const addr = server.address();
+  const bind = typeof addr !== 'string' ? 'port ' + (addr as AddressInfo).port : 'pipe ' + addr;
   debug('Listening on ' + bind);
 }
