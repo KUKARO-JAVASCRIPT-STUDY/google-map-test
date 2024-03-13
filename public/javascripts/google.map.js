@@ -19,6 +19,7 @@ async function initMap() {
     // Request needed libraries.
     //@ts-ignore
     const {Map} = await google.maps.importLibrary("maps");
+    const {Marker} = await google.maps.importLibrary("marker");
 
     // The map, centered at Uluru
     map = new Map(document.getElementById("map"), {
@@ -28,7 +29,7 @@ async function initMap() {
     });
 
     // The marker, positioned at Uluru
-    const marker = new google.maps.Marker({
+    const marker = new Marker({
         map: map,
         position: position,
         title: "Uluru",
